@@ -1,0 +1,9 @@
+# secrets — never commit
+.env
+
+# python virtual environment
+venv/
+
+# python cache files
+__pycache__/
+*.pyc
