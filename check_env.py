@@ -2,7 +2,7 @@ import os
 from dotenv import load_dotenv
 
 load_dotenv()
-key = os.getenv("ANTHROPIC_API_KEY")
+key = os.getenv("GEMINI_API_KEY")
 
 if key:
     print("Key loaded! Length:", len(key), "characters")

@@ -4,7 +4,8 @@
 > doing or why, I open this. Plain English, no jargon left unexplained. Claude keeps it updated
 > as we go.
 >
-> _Last updated: setup COMPLETE ✅ — ready for Phase 1 (needs a real API key first)._
+> _Last updated: Phase 1 in progress — switched from Anthropic to a free provider (Gemini), first
+> call worked once, then Gemini's free tier got flaky. Considering Groq as a more reliable primary._
 
 ---
 
@@ -177,13 +178,39 @@ urllib3==2.7.0
 
 ---
 
+## 🔀 Big direction change (from Nick)
+
+Nick redirected the project. Key points:
+- Build around the **OpenAI API standard chat endpoint** (`/v1/chat/completions`) — the request/response
+  format most providers copied. Send `model` + a `messages` list; read the answer from
+  `choices[0].message.content`.
+- Stay **provider-agnostic**: switching providers = change only 3 things — **base URL, API key, model name**.
+- **Don't eval Anthropic** models (already benchmarked to death) — use free, non-Anthropic models.
+- **Find free providers myself** (the point is the exercise). Free + OpenAI-compatible options: Groq,
+  Cerebras, Google Gemini, OpenRouter, NVIDIA NIM, GitHub Models.
+- The `.env` variable name is whatever I code it to be — not fixed. Renamed mine to `GEMINI_API_KEY`.
+- Lesson: Claude leaned toward Anthropic because it's made by Anthropic — a **bias**. Distrusting model
+  output like that is the whole point of the project.
+
+## Step 8 — Switched to Google Gemini + made my first real API call
+- Got a free Gemini key at aistudio.google.com (Free tier, no card), stored as `GEMINI_API_KEY` in `.env`.
+- Updated `check_env.py` to read `GEMINI_API_KEY` (one-word edit) — confirmed it loads (53 chars).
+- Wrote `phase1.py` using `requests` to POST to Gemini's OpenAI-compatible endpoint:
+  `https://generativelanguage.googleapis.com/v1beta/openai/chat/completions`, header
+  `Authorization: Bearer <key>`, body with `model` + `messages`.
+- It WORKED once — returned "The capital of France is Paris." That proves the code is correct.
+
 ## 📍 Where I am right now
 
-**✅ SETUP COMPLETE.** Repo, venv, requirements, `.env`, and a working key-loading test all done.
+**Phase 1 first call works, but Gemini's free tier is unreliable.** Hit `404` (model
+`gemini-2.5-flash` got deprecated) then repeated `503` "high demand" on every Gemini Flash variant.
+My code is fine; the free model behind it keeps failing.
 
-**Next → Phase 1:** send one hardcoded question to one model and print the answer.
-**Blocker:** Phase 1 needs a REAL Anthropic API key (mine is a placeholder). I need to ask Nick /
-get one from console.anthropic.com before I can make a real API call.
+**Decision:** switching primary model to **Groq** (free, no card, OpenAI-compatible, more reliable).
+Only need to change base URL + key + model name. Groq also becomes a 2nd provider for comparison later.
+
+**Still to finish Phase 1:** extract the clean answer (`choices[0].message.content`) and add graceful
+error handling (try/except), then commit `phase1.py`.
 
 ---
 
@@ -198,3 +225,9 @@ get one from console.anthropic.com before I can make a real API call.
 - Typing `NAME=value` at the shell prompt sets a temporary variable; it does NOT save to a file.
 - nano: I must wait for the editor screen (with `^O ^X` at the bottom) before typing, or nothing saves.
 - Python indentation is required, not decoration — lines under `if`/`else` need 4 spaces.
+- Mismatched quotes (`"..'`) make the terminal show `dquote>` — press Ctrl+C, redo with matching quotes.
+- API status codes: `200` = success, `404` = model/URL not found (often a deprecated model name),
+  `503` = server overloaded (temporary — just retry). Always print and read the status code.
+- Model names get retired FAST. Verify against the provider's live models page before trusting one.
+  Pin an exact model name (not a "latest" alias) so eval runs stay reproducible.
+- A `503` is a "transient error" — Phase 4 (retry with backoff) is literally built to auto-handle these.
