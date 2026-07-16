@@ -1,0 +1,72 @@
+[
+  {
+    "question": "What does the 'M' in BMW's M division (e.g. M3, M5) stand for?",
+    "options": { "A": "Modified", "B": "Motorsport", "C": "Maximum", "D": "Munich" },
+    "correct": "B"
+  },
+  {
+    "question": "What does BMW stand for?",
+    "options": { "A": "Bayerische Motoren Werke", "B": "Big Motor Wins", "C": "Bubbly Machine Wobbles", "D": "Baggy Motorsports Werk" },
+    "correct": "A"
+  },
+  {
+    "question": "When was BMW founded?",
+    "options": { "A": "1916", "B": "1920", "C": "1915", "D": "1919" },
+    "correct": "A"
+  },
+  {
+    "question": "Which engine options are available on the BMW 8 Series?",
+    "options": { "A": "3.0-liter turbocharged Inline-6", "B": "4.4-liter twin-turbocharged V-8", "C": "4.4-liter M Twin-Turbo V-8", "D": "All of these engines are offered across the 8 Series range" },
+    "correct": "D"
+  },
+  {
+    "question": "In BMW technician terminology, what does the acronym DME stand for?",
+    "options": { "A": "Dynamic Motor Electronics", "B": "Digital Motor Electronics", "C": "Dual Module Engine", "D": "Digital Management Engine" },
+    "correct": "B"
+  },
+  {
+    "question": "What was BMW's original primary manufacturing focus when it was established in 1916?",
+    "options": { "A": "Motorcycles", "B": "Aircraft engines", "C": "Agricultural tractors", "D": "Bicycles" },
+    "correct": "B"
+  },
+  {
+    "question": "Which is considered more of a track car",
+    "options": { "A": "M3", "B": "750i", "C": "840i", "D": "X7" },
+    "correct": "A"
+  },
+  {
+    "question": "The E92 M3's S65 naturally aspirated V8 revved to 8,400 RPM. Which race-derived feature helped it achieve this?",
+    "options": { "A": "Camless electromagnetic valve actuation", "B": "Individual throttle bodies for each cylinder", "C": "A dry-sump system with five scavenge pumps", "D": "A carbon-fiber crankshaft" },
+    "correct": "B"
+  },
+  {
+    "question": "How does BMW's xDrive system primarily distribute torque between the front and rear axles?",
+    "options": { "A": "A rigid mechanical locking differential", "B": "An electronically controlled multi-plate wet clutch in the transfer case", "C": "Separate front and rear electric motors", "D": "A fluid-filled viscous coupling" },
+    "correct": "B"
+  },
+  {
+    "question": "Which BMW has the smallest chasis in the US?",
+    "options": { "A": "2 series", "B": "1 series", "C": "3 series", "D": "4 series" },
+    "correct": "A"
+  },
+  {
+    "question": "What are the dual benefits of BMW's Integral Active Steering (rear-wheel steering)?",
+    "options": { "A": "Higher top speed and shorter braking", "B": "Low-speed agility and high-speed stability", "C": "Better fuel efficiency and softer suspension", "D": "Tighter turning radius and heavier steering feel" },
+    "correct": "B"
+  },
+  {
+    "question": "What is the primary function of BMW's Valvetronic system?",
+    "options": { "A": "Controls turbo boost pressure", "B": "Allows continuously variable valve lift", "C": "Adjusts gear shift timing in Sport mode", "D": "Optimizes all-wheel-drive distribution" },
+    "correct": "B"
+  },
+  {
+    "question": "What is the origin of the blue and white BMW logo?",
+    "options": { "A": "A spinning airplane propeller", "B": "The colors of the Bavarian flag", "C": "A tribute to the Bavarian Alps", "D": "The 1916 Munich coat of arms" },
+    "correct": "B"
+  },
+  {
+    "question": "What does BMW's Valvetronic system eliminate the need for?",
+    "options": { "A": "A conventional throttle body for air intake control", "B": "A timing chain", "C": "A camshaft entirely", "D": "A traditional oil pump" },
+    "correct": "A"
+  }
+]

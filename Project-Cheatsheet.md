@@ -202,15 +202,15 @@ Nick redirected the project. Key points:
 
 ## 📍 Where I am right now
 
-**Phase 1 first call works, but Gemini's free tier is unreliable.** Hit `404` (model
-`gemini-2.5-flash` got deprecated) then repeated `503` "high demand" on every Gemini Flash variant.
-My code is fine; the free model behind it keeps failing.
+**✅ Phase 1 done** — `phase1.py` calls Groq (`openai/gpt-oss-20b`), extracts the clean answer, handles
+failures. Switched to Groq after Gemini's free tier kept throwing `404`/`503`.
 
-**Decision:** switching primary model to **Groq** (free, no card, OpenAI-compatible, more reliable).
-Only need to change base URL + key + model name. Groq also becomes a 2nd provider for comparison later.
+**✅ Phase 2 done** — `phase2.py` loads 14 BMW questions from `questions.json`, asks the model each,
+grades against my answer key, prints a score. First run: **12/14 (85.7%)**. Key insight: both misses
+were on my shakiest questions, so the score partly reflects MY question quality, not just the model.
 
-**Still to finish Phase 1:** extract the clean answer (`choices[0].message.content`) and add graceful
-error handling (try/except), then commit `phase1.py`.
+**Next → Phase 3:** make it config-driven so adding a 2nd model is a config edit, not a code change —
+which sets up actually comparing models.
 
 ---
 

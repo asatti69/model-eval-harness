@@ -15,7 +15,7 @@ headers = {"Authorization": f"Bearer {key}"}
 payload = {
     "model": "openai/gpt-oss-20b",     # which model on Groq I want to answer
     "messages": [                      # the conversation, as a list of messages
-        {"role": "user", "content": "what is the capital of France"}  # my question
+        {"role": "user", "content": "what is the tallest mountain on Earth?"}  # my question
     ],
 }
 

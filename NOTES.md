@@ -42,6 +42,38 @@
 ## Progress
 
 - ✅ Setup complete (git, venv, requirements, `.env`, key-loading test).
-- 🔄 Phase 1 ~90%: first real API call worked ("Paris"); still need graceful error handling + a reliable
-  provider, then commit.
-- ⬜ Phase 2 next: questions from a file, scoring loop, percentage (write 15–20 of my own MCQs).
+- ✅ Phase 1 done: `phase1.py` sends one question to **Groq** (`openai/gpt-oss-20b`), extracts the clean
+  answer (`choices[0].message.content`), and handles failures with try/except. Committed.
+- ✅ Phase 2 done: `phase2.py` loads my 14 BMW questions from `questions.json`, loops, asks the model
+  each one (prompt ends "Answer with ONLY the letter"), grades against my answer key, prints a score.
+  First run: **12/14 (85.7%)**.
+
+## Phase 2 decisions & lessons
+
+- **Domain: BMW cars** (something I know), so I can trust my own answer key.
+- **Grader is simple:** take the first letter the model returns and compare to my `correct` letter.
+  Works because the model reliably replied with just a letter. Harder parsing is Phase 5.
+- **Big lesson from my own score:** the 2 the model got "wrong" (Q8 S65 engine, Q10 smallest US chassis)
+  are my 2 *shakiest* questions — Q8 has two arguably-true options, Q10's answer is contested (1 vs 2
+  Series). So **85.7% partly measures MY question quality, not just the model.** A benchmark score is
+  entangled with the test itself.
+- **To explore in Phase 7:** small sample (14 Qs → each is ~7%); and models are non-deterministic, so
+  re-running may change the score with no code change.
+
+## Experiment: same eval, 3 runs, nothing changed (Phase 7 evidence)
+
+Ran `phase2.py` three times with zero changes on `openai/gpt-oss-20b`:
+- Run 1: **12/14 (85.7%)** — wrong: Q8, Q10
+- Run 2: **12/14 (85.7%)** — wrong: Q8, Q10
+- Run 3: **11/14 (78.6%)** — wrong: Q8, Q10, **Q13**
+
+Findings:
+- **Non-determinism is real but selective.** Confident questions gave the same answer every run; the
+  one that flipped (Q13, the nuanced logo question) is where the model is least sure. Variance appears
+  where confidence is low.
+- **Q8 and Q10 were wrong every run = systematic** (question/key quality), not luck.
+- **A single score is falsely precise.** 14 questions → one flip = ~7 points. Honest summary of this
+  model on my set is "~79–86%, depends on the run," NOT "85.7%."
+- **Takeaway:** to characterize a model I'd need more questions (each matters less) + multiple runs
+  (to see the spread), then report an average/range — not one number. This is *why* "Model A scored
+  87%" is close to meaningless without context.
