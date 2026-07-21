@@ -1,0 +1,17 @@
+{
+  "question_file": "questions.json",
+  "models": [
+    {
+      "name": "grok baby",
+      "base_url": "https://api.groq.com/openai/v1/chat/completions",
+      "api_key_env": "GROQ_API_KEY",
+      "model_id": "openai/gpt-oss-20b"
+    },
+    {
+      "name": "grok daddy",
+      "base_url": "https://api.groq.com/openai/v1/chat/completions",
+      "api_key_env": "GROQ_API_KEY",
+      "model_id": "openai/gpt-oss-120b"
+    }
+  ]
+}

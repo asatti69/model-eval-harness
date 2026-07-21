@@ -209,8 +209,12 @@ failures. Switched to Groq after Gemini's free tier kept throwing `404`/`503`.
 grades against my answer key, prints a score. First run: **12/14 (85.7%)**. Key insight: both misses
 were on my shakiest questions, so the score partly reflects MY question quality, not just the model.
 
-**Next → Phase 3:** make it config-driven so adding a 2nd model is a config edit, not a code change —
-which sets up actually comparing models.
+**✅ Phase 3 done** — `config.json` holds the question file + a list of models; `phase3.py` reads it and
+loops (eval wrapped in a `run_eval()` function). Added a 2nd model (`gpt-oss-120b`) with a config-only
+change. First comparison showed which model "wins" depends on the run — single comparisons mislead.
+
+**Next → Phase 4:** make it robust + accountable — retry with backoff (for the 503s/empty answers),
+run requests concurrently (faster), and track tokens + estimated cost per model per run.
 
 ---
 

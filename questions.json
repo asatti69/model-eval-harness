@@ -45,7 +45,7 @@
     "correct": "B"
   },
   {
-    "question": "Which BMW has the smallest chasis in the US?",
+    "question": "Which BMW has the smallest chasis in the US, considering the US doesnt manufacture a few series?",
     "options": { "A": "2 series", "B": "1 series", "C": "3 series", "D": "4 series" },
     "correct": "A"
   },
@@ -65,8 +65,8 @@
     "correct": "B"
   },
   {
-    "question": "What does BMW's Valvetronic system eliminate the need for?",
-    "options": { "A": "A conventional throttle body for air intake control", "B": "A timing chain", "C": "A camshaft entirely", "D": "A traditional oil pump" },
-    "correct": "A"
+    "question": "Which BMW has the smallest chasis in the UK?",
+    "options": { "A": "2 series", "B": "1 series", "C": "3 series", "D": "4 series" },
+    "correct": "B"
   }
 ]
