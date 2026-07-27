@@ -57,6 +57,15 @@ handling only covers the failures you anticipate.** Fixed with `cleaned[0] if cl
   runs + average (+ more questions) to make a real claim. Direct evidence for why vendor benchmark
   numbers need context.
 
+## Phase 4 (part 1) — retry with exponential backoff
+
+- ✅ Added `call_with_retry()`: retries a failed call up to 4 times, waiting 1s→2s→4s (`2 ** (attempt-1)`)
+  before giving up and returning `None`. `run_eval` skips a question that fully fails (`continue`), so
+  the run keeps going. Built in `phase4.py` (copied from `phase3.py`).
+- **Nuance to remember:** my version retries *every* error, but a `404`/`401` is permanent — real retry
+  logic only retries *transient* errors (503/timeout). Fine for now, but a likely walkthrough question.
+- Still to do in Phase 4: concurrency (speed) + token/cost tracking.
+
 ## Progress
 
 - ✅ Setup complete (git, venv, requirements, `.env`, key-loading test).
