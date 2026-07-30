@@ -25,7 +25,7 @@ def run_eval(model, questions):
     for index, q in enumerate(questions, start=1):
         option_lines = ""
         for letter, text in q["options"].items():
-            option_lines += f"{letter}) {text}\n".  # used an Fstring storing each option letter and the answer choice after each new line starts
+            option_lines += f"{letter}) {text}\n" # used an Fstring storing each option letter and the answer choice after each new line starts
         prompt = f"{q['question']}\n{option_lines}\nAnswer with ONLY the letter (A, B, C, or D)." # another fstring in which it glues the whole prompt, Q , options , and command
         payload = {
             "model": model["model_id"],        # wraps the whole question in an Openai order
@@ -33,7 +33,7 @@ def run_eval(model, questions):
         }
         try:
             response = requests.post(url, headers=headers, json=payload, timeout=30)
-            response.raise_for_status(). #error check for the network status
+            response.raise_for_status() #error check for the network status
             data = response.json()
             model_answer = data["choices"][0]["message"]["content"]  
             cleaned = model_answer.strip().upper()
