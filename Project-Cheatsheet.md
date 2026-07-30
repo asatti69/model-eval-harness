@@ -213,8 +213,13 @@ were on my shakiest questions, so the score partly reflects MY question quality,
 loops (eval wrapped in a `run_eval()` function). Added a 2nd model (`gpt-oss-120b`) with a config-only
 change. First comparison showed which model "wins" depends on the run — single comparisons mislead.
 
-**Next → Phase 4:** make it robust + accountable — retry with backoff (for the 503s/empty answers),
-run requests concurrently (faster), and track tokens + estimated cost per model per run.
+**✅ Phase 4 done** — in `phase4.py`: retry with backoff (`call_with_retry`), token + cost tracking
+(from each response's `usage`, prices in `config.json`), and concurrency (`ThreadPoolExecutor`,
+5 workers) so questions run in parallel. Learned functions, accumulators, dicts-vs-tuples, exception
+types, and threads.
+
+**Next → Phase 5:** harder scoring — fuzzy/normalized matching for short text answers, then
+LLM-as-judge (use a model to grade another model), and find a case where the judge grades wrong.
 
 ---
 

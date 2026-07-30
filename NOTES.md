@@ -57,14 +57,24 @@ handling only covers the failures you anticipate.** Fixed with `cleaned[0] if cl
   runs + average (+ more questions) to make a real claim. Direct evidence for why vendor benchmark
   numbers need context.
 
-## Phase 4 (part 1) — retry with exponential backoff
+## Phase 4 — robust + accountable (DONE)
 
-- ✅ Added `call_with_retry()`: retries a failed call up to 4 times, waiting 1s→2s→4s (`2 ** (attempt-1)`)
-  before giving up and returning `None`. `run_eval` skips a question that fully fails (`continue`), so
-  the run keeps going. Built in `phase4.py` (copied from `phase3.py`).
-- **Nuance to remember:** my version retries *every* error, but a `404`/`401` is permanent — real retry
-  logic only retries *transient* errors (503/timeout). Fine for now, but a likely walkthrough question.
-- Still to do in Phase 4: concurrency (speed) + token/cost tracking.
+**Part 1 — retry with backoff:** `call_with_retry()` retries a failed call up to 4 times, waiting
+1s→2s→4s (`2 ** (attempt-1)`), then returns `None`. `run_eval` treats `None` as "skip this question,"
+so the run keeps going. Nuance: I retry *every* error, but `404`/`401` are permanent — real logic only
+retries *transient* errors (503/timeout). Likely walkthrough question.
+
+**Part 2 — cost tracking:** sum `prompt_tokens` + `completion_tokens` from each response's `usage`,
+then cost = tokens/1M × price. Prices live in `config.json` (verified against groq.com/pricing:
+20b = $0.075/$0.30, 120b = $0.15/$0.60 per 1M in/out). Insight: grok daddy used FEWER tokens but cost
+MORE (higher price/token) — cost ≠ token count. Real tradeoff: daddy scores ~14pts higher for ~50% more $.
+
+**Part 3 — concurrency:** `ThreadPoolExecutor(max_workers=5)` runs `grade_question` on all questions in
+parallel; network waits overlap instead of stacking, so it's faster. Cap of 5 avoids `429` rate limits.
+Aggregate results AFTER threads finish (each returns its own dict) — avoids shared-counter race bugs.
+
+**Lesson:** I gave myself confident-but-wrong prices from memory; caught it by checking Groq's live page.
+Don't trust a model's recall of changeable facts — verify the source. (Phase 7 theme, live.)
 
 ## Progress
 
