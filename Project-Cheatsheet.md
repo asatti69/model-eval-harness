@@ -223,8 +223,14 @@ LLM-as-judge (a model grades the answer, understands "three"=3). Documented the 
 passed a wrong answer 2/5 times without a key, and was non-deterministic — proof the judge is itself
 fallible. Open-ended questions in `questions_open.json`.
 
-**Next → Phase 6:** save every run to a timestamped file (reproducible), generate a comparison report
-(score + cost per model), and be able to look up a past answer.
+**✅ Phase 6 done** — `phase6.py` saves each run to `results/run_<timestamp>.json` (full detail);
+`report.py` prints a comparison table from the newest run; `lookup.py` answers "what did model X say
+for question N". Runs are saved, re-openable, comparable, and queryable.
+
+**Next → Phase 7:** methodology writeup (NO new code) — a README section answering: does the score
+change on a re-run + why; what temperature does; how much a 14-question set can swing by luck; what data
+contamination is; what you'd need before trusting a vendor's "92%". I already have evidence for most of
+this in NOTES (3-run non-determinism, model comparison flipping, judge failing).
 
 ---
 

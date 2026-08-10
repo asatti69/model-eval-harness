@@ -105,6 +105,19 @@ Don't trust a model's recall of changeable facts — verify the source. (Phase 7
   distrust as any benchmark. Also captured big non-determinism in the answering model: same questions,
   different answers across runs (Drive→Walk, Two→Three, table→microwave).
 
+## Phase 6 — results + reporting (DONE)
+
+- ✅ `phase6.py` saves every run to `results/run_<timestamp>.json` with full detail: timestamp, question
+  file, and per model the score/cost/tokens + every question (question, model_answer, correct, is_correct).
+  Uses `datetime` for the stamp, `os.makedirs` for the folder, `json.dump` (`'w'` mode) to write.
+- ✅ `report.py` reopens the newest run (`glob` + `sorted[-1]`) and prints a comparison table (model,
+  score, %, cost).
+- ✅ `lookup.py` answers "what did model X say for question N" — reads the saved run, converts the human
+  question number to a 0-based index (`n-1`), prints the answer/correct/result.
+- Meets definition-of-done: runs saved + re-openable, comparison report on score+cost, per-answer lookup.
+- **Loose end for cleanup:** two harnesses exist (MCQ multi-model in phase6, open-ended single-model in
+  phase5). Ideal end-state = one config-driven harness handling both question types.
+
 ## Progress
 
 - ✅ Setup complete (git, venv, requirements, `.env`, key-loading test).
