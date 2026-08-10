@@ -7,3 +7,4 @@ venv/
 # python cache files
 __pycache__/
 *.pyc
+model-eval-harness-spec.pdf

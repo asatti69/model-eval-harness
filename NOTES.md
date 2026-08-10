@@ -76,6 +76,35 @@ Aggregate results AFTER threads finish (each returns its own dict) — avoids sh
 **Lesson:** I gave myself confident-but-wrong prices from memory; caught it by checking Groq's live page.
 Don't trust a model's recall of changeable facts — verify the source. (Phase 7 theme, live.)
 
+## Phase 5 (part 1) — fuzzy matching + its limits
+
+- ✅ `phase5.py` grades open-ended answers by `normalize()` (lowercase, strip punctuation/space) then a
+  substring check (`fuzzy_match`). Questions in `questions_open.json` (6 reasoning-trap questions).
+- **Big finding — the grader itself is unreliable.** Fuzzy-match scored the model **2/6**, but the model
+  really deserved ~4/6:
+  - "All four cats" marked WRONG because `"4"` isn't inside `"four"` (word vs digit → false negative).
+  - "Three." marked WRONG for the strawberry Q even though the model got it RIGHT (same word-vs-digit issue).
+  - Car-wash Q: model said "walk" (arguably better than my key "Drive") — my answer key was subjective.
+  - Only the three-killers miss (model said 2, answer 3) was a *real* model failure.
+- **Lesson:** a dumb string matcher can't understand meaning ("three" = 3), so the *scoring method* can be
+  the source of error, not the model. This is why LLM-as-judge exists — and why even a smart judge must be
+  distrusted (Phase 7 theme). Grades are only as good as the grader.
+
+## Phase 5 (part 2) — LLM-as-judge + its failure (DONE)
+
+- ✅ `judge_correct()` asks a model to grade an answer (understands "three" = 3, fixing fuzzy's
+  false negatives). Bug I fixed: `"CORRECT" in verdict` is True for "INCORRECT" too (substring trap) —
+  check `"INCORRECT"` first.
+- Fuzzy vs judge on the open set: fuzzy ~2-3/6, judge ~4-5/6. Judge is reliable **when given the answer
+  key** (it's basically smart comparison then).
+- **Task 15 — judge caught failing.** Asked the judge to grade the wrong answer "Two" to the killers
+  riddle (real answer 3) WITHOUT the key, 5 times: verdicts were CORRECT, INCORRECT, INCORRECT,
+  INCORRECT, CORRECT. So it (a) passed a wrong answer 2/5 times — it shares the model's blind spot and
+  can't catch a mistake it would make itself; and (b) was non-deterministic on identical input.
+- **Lesson:** an LLM judge is itself a fallible, wobbly model. "LLM-judge scored 92%" deserves the same
+  distrust as any benchmark. Also captured big non-determinism in the answering model: same questions,
+  different answers across runs (Drive→Walk, Two→Three, table→microwave).
+
 ## Progress
 
 - ✅ Setup complete (git, venv, requirements, `.env`, key-loading test).

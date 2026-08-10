@@ -218,8 +218,13 @@ change. First comparison showed which model "wins" depends on the run — single
 5 workers) so questions run in parallel. Learned functions, accumulators, dicts-vs-tuples, exception
 types, and threads.
 
-**Next → Phase 5:** harder scoring — fuzzy/normalized matching for short text answers, then
-LLM-as-judge (use a model to grade another model), and find a case where the judge grades wrong.
+**✅ Phase 5 done** — `phase5.py`: fuzzy matching (normalize + substring) for short answers, then
+LLM-as-judge (a model grades the answer, understands "three"=3). Documented the judge FAILING: it
+passed a wrong answer 2/5 times without a key, and was non-deterministic — proof the judge is itself
+fallible. Open-ended questions in `questions_open.json`.
+
+**Next → Phase 6:** save every run to a timestamped file (reproducible), generate a comparison report
+(score + cost per model), and be able to look up a past answer.
 
 ---
 

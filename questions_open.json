@@ -1,0 +1,9 @@
+[
+  { "question": "I want to wash my car. The car wash is 50 meters away. Should I walk or drive?", "answer": "Drive" },
+  { "question": "If a room has 4 corners, and in each corner sits a cat, and each cat looks at 3 other cats, how many cats see another cat?", "answer": "4" },
+  { "question": "how many \"Rs\" are in strawberry?", "answer": "3" },
+  { "question": "If yesterday's tomorrow is Wednesday, what day is today?", "answer": "Wednesday" },
+  { "question": "There are three killers in a room. Someone enters and kills one of them. Nobody leaves. How many killers are left?", "answer": "3" },
+  { "question": "A marble is put in a cup. The cup is turned upside down on a table. Then the cup is picked up and put in the microwave. Where is the marble?", "answer": "Table" }
+  
+]
