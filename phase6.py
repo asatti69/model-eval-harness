@@ -40,7 +40,7 @@ def run_eval(model, questions):
         for letter, text in q["options"].items():
             option_lines += f"{letter}) {text}\n"
         prompt = f"{q['question']}\n{option_lines}\nAnswer with ONLY the letter (A, B, C, or D)."
-        payload = {"model": model["model_id"], "messages": [{"role": "user", "content": prompt}]}
+        payload = {"model": model["model_id"], "messages": [{"role": "user", "content": prompt}], "temperature": 1.5}
         data = call_with_retry(url, headers, payload)
         if data is None:
             return {"question": q["question"], "model_answer": "?", "correct": q["correct"],

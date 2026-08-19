@@ -1,0 +1,6 @@
+Report for results/run_2026-08-10_19-14-49.json
+
+Model         Score   Percent   Cost        
+--------------------------------------------
+grok baby     11/14   78.6      $0.001521
+grok daddy    13/14   92.9      $0.001058

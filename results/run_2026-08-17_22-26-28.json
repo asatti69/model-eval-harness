@@ -1,0 +1,252 @@
+{
+  "timestamp": "2026-08-17_22-26-28",
+  "question_file": "questions.json",
+  "results": [
+    {
+      "model": "grok baby",
+      "score": "9/14",
+      "correct": 9,
+      "total": 14,
+      "prompt_tokens": 1312,
+      "completion_tokens": 3587,
+      "cost": 0.0011745,
+      "answers": [
+        {
+          "question": "What does the 'M' in BMW's M division (e.g. M3, M5) stand for?",
+          "model_answer": "B",
+          "correct": "B",
+          "is_correct": true,
+          "prompt_tokens": 126,
+          "completion_tokens": 31
+        },
+        {
+          "question": "What does BMW stand for?",
+          "model_answer": "A",
+          "correct": "A",
+          "is_correct": true,
+          "prompt_tokens": 124,
+          "completion_tokens": 62
+        },
+        {
+          "question": "When was BMW founded?",
+          "model_answer": "A",
+          "correct": "A",
+          "is_correct": true,
+          "prompt_tokens": 115,
+          "completion_tokens": 337
+        },
+        {
+          "question": "Which engine options are available on the BMW 8 Series?",
+          "model_answer": "D",
+          "correct": "D",
+          "is_correct": true,
+          "prompt_tokens": 156,
+          "completion_tokens": 247
+        },
+        {
+          "question": "In BMW technician terminology, what does the acronym DME stand for?",
+          "model_answer": "B",
+          "correct": "B",
+          "is_correct": true,
+          "prompt_tokens": 124,
+          "completion_tokens": 1737
+        },
+        {
+          "question": "What was BMW's original primary manufacturing focus when it was established in 1916?",
+          "model_answer": "B",
+          "correct": "B",
+          "is_correct": true,
+          "prompt_tokens": 124,
+          "completion_tokens": 123
+        },
+        {
+          "question": "Which is considered more of a track car",
+          "model_answer": "?",
+          "correct": "A",
+          "is_correct": false,
+          "prompt_tokens": 0,
+          "completion_tokens": 0
+        },
+        {
+          "question": "The E92 M3's S65 naturally aspirated V8 revved to 8,400 RPM. Which race-derived feature helped it achieve this?",
+          "model_answer": "C",
+          "correct": "B",
+          "is_correct": false,
+          "prompt_tokens": 158,
+          "completion_tokens": 173
+        },
+        {
+          "question": "How does BMW's xDrive system primarily distribute torque between the front and rear axles?",
+          "model_answer": "?",
+          "correct": "B",
+          "is_correct": false,
+          "prompt_tokens": 0,
+          "completion_tokens": 0
+        },
+        {
+          "question": "Which BMW has the smallest chasis in the US, considering the US doesnt manufacture a few series?",
+          "model_answer": "A",
+          "correct": "A",
+          "is_correct": true,
+          "prompt_tokens": 130,
+          "completion_tokens": 277
+        },
+        {
+          "question": "What are the dual benefits of BMW's Integral Active Steering (rear-wheel steering)?",
+          "model_answer": "?",
+          "correct": "B",
+          "is_correct": false,
+          "prompt_tokens": 0,
+          "completion_tokens": 0
+        },
+        {
+          "question": "What is the primary function of BMW's Valvetronic system?",
+          "model_answer": "B",
+          "correct": "B",
+          "is_correct": true,
+          "prompt_tokens": 134,
+          "completion_tokens": 44
+        },
+        {
+          "question": "What is the origin of the blue and white BMW logo?",
+          "model_answer": "?",
+          "correct": "B",
+          "is_correct": false,
+          "prompt_tokens": 0,
+          "completion_tokens": 0
+        },
+        {
+          "question": "Which BMW has the smallest chasis in the UK?",
+          "model_answer": "B",
+          "correct": "B",
+          "is_correct": true,
+          "prompt_tokens": 121,
+          "completion_tokens": 556
+        }
+      ]
+    },
+    {
+      "model": "grok daddy",
+      "score": "13/14",
+      "correct": 13,
+      "total": 14,
+      "prompt_tokens": 1852,
+      "completion_tokens": 1540,
+      "cost": 0.0012017999999999998,
+      "answers": [
+        {
+          "question": "What does the 'M' in BMW's M division (e.g. M3, M5) stand for?",
+          "model_answer": "B",
+          "correct": "B",
+          "is_correct": true,
+          "prompt_tokens": 126,
+          "completion_tokens": 63
+        },
+        {
+          "question": "What does BMW stand for?",
+          "model_answer": "A",
+          "correct": "A",
+          "is_correct": true,
+          "prompt_tokens": 124,
+          "completion_tokens": 56
+        },
+        {
+          "question": "When was BMW founded?",
+          "model_answer": "A",
+          "correct": "A",
+          "is_correct": true,
+          "prompt_tokens": 115,
+          "completion_tokens": 88
+        },
+        {
+          "question": "Which engine options are available on the BMW 8 Series?",
+          "model_answer": "D",
+          "correct": "D",
+          "is_correct": true,
+          "prompt_tokens": 156,
+          "completion_tokens": 198
+        },
+        {
+          "question": "In BMW technician terminology, what does the acronym DME stand for?",
+          "model_answer": "B",
+          "correct": "B",
+          "is_correct": true,
+          "prompt_tokens": 124,
+          "completion_tokens": 118
+        },
+        {
+          "question": "What was BMW's original primary manufacturing focus when it was established in 1916?",
+          "model_answer": "B",
+          "correct": "B",
+          "is_correct": true,
+          "prompt_tokens": 124,
+          "completion_tokens": 64
+        },
+        {
+          "question": "Which is considered more of a track car",
+          "model_answer": "A",
+          "correct": "A",
+          "is_correct": true,
+          "prompt_tokens": 117,
+          "completion_tokens": 74
+        },
+        {
+          "question": "The E92 M3's S65 naturally aspirated V8 revved to 8,400 RPM. Which race-derived feature helped it achieve this?",
+          "model_answer": "C",
+          "correct": "B",
+          "is_correct": false,
+          "prompt_tokens": 158,
+          "completion_tokens": 158
+        },
+        {
+          "question": "How does BMW's xDrive system primarily distribute torque between the front and rear axles?",
+          "model_answer": "B",
+          "correct": "B",
+          "is_correct": true,
+          "prompt_tokens": 145,
+          "completion_tokens": 115
+        },
+        {
+          "question": "Which BMW has the smallest chasis in the US, considering the US doesnt manufacture a few series?",
+          "model_answer": "A",
+          "correct": "A",
+          "is_correct": true,
+          "prompt_tokens": 130,
+          "completion_tokens": 217
+        },
+        {
+          "question": "What are the dual benefits of BMW's Integral Active Steering (rear-wheel steering)?",
+          "model_answer": "B",
+          "correct": "B",
+          "is_correct": true,
+          "prompt_tokens": 141,
+          "completion_tokens": 44
+        },
+        {
+          "question": "What is the primary function of BMW's Valvetronic system?",
+          "model_answer": "B",
+          "correct": "B",
+          "is_correct": true,
+          "prompt_tokens": 134,
+          "completion_tokens": 79
+        },
+        {
+          "question": "What is the origin of the blue and white BMW logo?",
+          "model_answer": "B",
+          "correct": "B",
+          "is_correct": true,
+          "prompt_tokens": 137,
+          "completion_tokens": 188
+        },
+        {
+          "question": "Which BMW has the smallest chasis in the UK?",
+          "model_answer": "B",
+          "correct": "B",
+          "is_correct": true,
+          "prompt_tokens": 121,
+          "completion_tokens": 78
+        }
+      ]
+    }
+  ]
+}

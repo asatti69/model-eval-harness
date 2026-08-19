@@ -13,6 +13,7 @@ with open("questions_open.json") as f:       # load the short-answer questions
     questions = json.load(f)
 
 model = config["models"][0]                  # use the first model in the config
+judge_model = config["models"][1]    # a DIFFERENT model grades them (grok daddy)
 key = os.getenv(model["api_key_env"])        # its API key
 url = model["base_url"]                       # its endpoint
 headers = {"Authorization": f"Bearer {key}"} # auth header
@@ -38,18 +39,18 @@ def normalize(text):                         # clean a string down to bare words
     return text.strip()
 
 
-def fuzzy_match(expected, model_answer):     # DUMB grader: is the expected text inside the answer?
+def fuzzy_match(expected, model_answer):     # DUMB grader is the expected text inside the answer?
     return normalize(expected) in normalize(model_answer)
 
 
-def judge_correct(question, expected, model_answer):   # SMART grader: ask a model to judge
+def judge_correct(question, expected, model_answer):   # SMART grader, ask a model to judge
     judge_prompt = (                         # give the judge the question, expected, and given answer
         f"Question: {question}\n"
         f"Expected answer: {expected}\n"
         f"Model's answer: {model_answer}\n\n"
         "Is the model's answer correct? Reply with only one word: CORRECT or INCORRECT."
     )
-    payload = {"model": model["model_id"], "messages": [{"role": "user", "content": judge_prompt}]}
+    payload = {"model": judge_model["model_id"], "messages": [{"role": "user", "content": judge_prompt}]}
     data = call_with_retry(url, headers, payload)      # ask the judge model
     if data is None:                         # judge call failed
         return False
