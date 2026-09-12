@@ -5,6 +5,8 @@ question set, scores them, tracks token cost, and produces saved, comparable rep
 scratch in Python to learn both **how to build an eval** and, more importantly, **why a single
 benchmark score usually can't be trusted.**
 
+![Dashboard](dashboard.png)
+
 ---
 
 ## What it does
